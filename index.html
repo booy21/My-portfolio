@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>@Aayushverse | Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+</head>
+<body>
+  <!-- Header/Navbar -->
+  <header id="header">
+    <nav class="navbar">
+      <a href="#home" class="navbar-brand">💻 Aayushverse — <span class="brand-subtitle">Where Code Meets Creativity</span></a>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="theme-toggle" id="theme-toggle" title="Toggle light/dark mode">
+        <span class="toggle-icon moon"><i class="fa-solid fa-moon"></i></span>
+        <span class="toggle-icon sun"><i class="fa-solid fa-sun"></i></span>
+        <div class="toggle-slider"></div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero-section">
+    <div class="greeting-message" id="greeting-message"></div>
+    <div class="sky-elements">
+      <div class="moon" id="moon"></div>
+      <div class="sun" id="sun">
+        <div class="sun-rays"></div>
+      </div>
+      <div class="stars" id="stars"></div>
+      <div class="clouds" id="clouds"></div>
+    </div>
+    <canvas id="snow-canvas"></canvas>
+    <div class="mountain-bg">
+      <svg class="mountain-svg" viewBox="0 0 1440 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="mountain1" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#3a4256"/>
+            <stop offset="100%" stop-color="#23293a"/>
+          </linearGradient>
+          <linearGradient id="mountain2" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#4b5670"/>
+            <stop offset="100%" stop-color="#2c3447"/>
+          </linearGradient>
+          <linearGradient id="mountain3" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#5c6a89"/>
+            <stop offset="100%" stop-color="#38405a"/>
+          </linearGradient>
+          <radialGradient id="windowGlow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#fffbe6" stop-opacity="1"/>
+            <stop offset="100%" stop-color="#ffe066" stop-opacity="0.7"/>
+          </radialGradient>
+        </defs>
+        <!-- Furthest mountain -->
+        <path d="M0 600L200 400L400 500L600 350L800 500L1000 300L1200 400L1440 250V600H0Z" fill="url(#mountain3)"/>
+        <!-- Middle mountain -->
+        <path d="M0 600L300 350L500 500L700 300L900 450L1200 250L1440 400V600H0Z" fill="url(#mountain2)"/>
+        <!-- Closest mountain -->
+        <path d="M0 600L400 300L600 500L900 200L1200 400L1440 350V600H0Z" fill="url(#mountain1)"/>
+        <!-- Snow caps -->
+        <polygon points="410,320 430,300 450,320 440,330 420,330" fill="#fff" opacity="0.85"/>
+        <polygon points="910,220 930,200 950,220 940,230 920,230" fill="#fff" opacity="0.85"/>
+        <polygon points="1210,420 1230,400 1250,420 1240,430 1220,430" fill="#fff" opacity="0.85"/>
+        <polygon points="320,370 340,350 360,370 350,380 330,380" fill="#fff" opacity="0.85"/>
+        <!-- Houses -->
+        <g class="houses">
+          <!-- House 1 -->
+          <g class="house" id="house1">
+            <rect x="320" y="480" width="50" height="40" fill="#3a2f2f" rx="6"/>
+            <rect x="335" y="495" width="20" height="15" fill="url(#windowGlow)" class="window"/>
+            <rect x="345" y="510" width="10" height="10" fill="#ffe066" class="window"/>
+            <rect x="335" y="510" width="8" height="10" fill="#bfa76a" class="door"/>
+            <polygon points="320,480 345,465 370,480" fill="#2c2323"/>
+            <!-- Chimney -->
+            <rect class="chimney" x="355" y="465" width="7" height="18" fill="#888"/>
+            <g class="smoke-group" id="smoke1"></g>
+          </g>
+          <!-- House 2 -->
+          <g class="house" id="house2">
+            <rect x="1000" y="420" width="60" height="50" fill="#3a2f2f" rx="7"/>
+            <rect x="1015" y="440" width="25" height="18" fill="url(#windowGlow)" class="window"/>
+            <rect x="1035" y="460" width="12" height="10" fill="#ffe066" class="window"/>
+            <rect x="1015" y="460" width="10" height="10" fill="#bfa76a" class="door"/>
+            <polygon points="1000,420 1030,400 1060,420" fill="#2c2323"/>
+            <!-- Chimney -->
+            <rect class="chimney" x="1040" y="400" width="8" height="20" fill="#888"/>
+            <g class="smoke-group" id="smoke2"></g>
+          </g>
+        </g>
+      </svg>
+    </div>
+    <div class="hero-content">
+      <h1>Hi, I'm Aayush <span>👋</span></h1>
+      <h2>Web Developer | Learner | Coder</h2>
+      <a href="#projects" class="btn">View Projects</a>
+    </div>
+    <div class="cursor-trail" id="cursor-trail"></div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="about-section section-animate">
+    <h2 class="section-heading">About Me</h2>
+    <div class="about-container">
+      <div class="about-image stagger-animate stagger-delay-1">
+        <img src="profile.jpg" alt="Aayush Kumar" class="profile-img">
+      </div>
+      <div class="about-content">
+        <h2 class="about-heading stagger-animate stagger-delay-2">Hi, I'm Aayush Kumar 👋</h2>
+        <p class="about-description stagger-animate stagger-delay-3">
+          I'm a creative and passionate full-stack developer who loves turning ideas into reality through elegant code. 
+          With a keen eye for detail and a drive for innovation, I craft digital experiences that not only function flawlessly 
+          but also delight users with their intuitive design and smooth interactions.
+        </p>
+        <div class="about-traits">
+          <div class="trait-item stagger-animate stagger-delay-4">
+            <i class="fas fa-lightbulb"></i>
+            <span>Creative Thinker</span>
+          </div>
+          <div class="trait-item stagger-animate stagger-delay-4">
+            <i class="fas fa-puzzle-piece"></i>
+            <span>Problem Solver</span>
+          </div>
+          <div class="trait-item stagger-animate stagger-delay-4">
+            <i class="fas fa-users"></i>
+            <span>Team Player</span>
+          </div>
+          <div class="trait-item stagger-animate stagger-delay-5">
+            <i class="fas fa-rocket"></i>
+            <span>Fast Learner</span>
+          </div>
+          <div class="trait-item stagger-animate stagger-delay-5">
+            <i class="fas fa-heart"></i>
+            <span>Passionate Coder</span>
+          </div>
+        </div>
+        <button class="download-resume-btn stagger-animate stagger-delay-5">
+          <i class="fas fa-download"></i>
+          <span>Download Resume</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="skills-section section-animate">
+    <h2 class="section-heading">Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-card stagger-animate stagger-delay-1" data-tooltip="Structure Sorcerer">
+        <i class="fab fa-html5"></i>
+        <span>HTML</span>
+        <div class="tooltip">Structure Sorcerer</div>
+      </div>
+      <div class="skill-card stagger-animate stagger-delay-2" data-tooltip="Design Alchemist">
+        <i class="fab fa-css3-alt"></i>
+        <span>CSS</span>
+        <div class="tooltip">Design Alchemist</div>
+      </div>
+      <div class="skill-card stagger-animate stagger-delay-3" data-tooltip="Logic Caster">
+        <i class="fab fa-js"></i>
+        <span>JavaScript</span>
+        <div class="tooltip">Logic Caster</div>
+      </div>
+      <div class="skill-card stagger-animate stagger-delay-4" data-tooltip="Automation Whisperer">
+        <i class="fab fa-python"></i>
+        <span>Python</span>
+        <div class="tooltip">Automation Whisperer</div>
+      </div>
+      <div class="skill-card stagger-animate stagger-delay-5" data-tooltip="Performance Wizard">
+        <i class="fa-solid fa-code"></i>
+        <span>C++</span>
+        <div class="tooltip">Performance Wizard</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="projects-section section-animate">
+    <h2 class="section-heading">Projects</h2>
+    <div class="projects-coming-soon">
+      <div class="coming-soon-message stagger-animate stagger-delay-2">
+        🚧 Projects Coming Soon...
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact-section section-animate">
+    <h2 class="section-heading">Contact</h2>
+    <div class="contact-container">
+      <div class="contact-details stagger-animate stagger-delay-1">
+        <div class="contact-item"><i class="fa-solid fa-envelope"></i> ak9080365@gmail.com</div>
+        <div class="contact-item"><i class="fa-solid fa-phone"></i> 8862838503</div>
+        <div class="contact-item"><i class="fa-solid fa-location-dot"></i> India</div>
+        <div class="social-icons">
+          <a href="https://github.com/booy21" target="_blank"><i class="fab fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/aayush-kumar-542876293/" target="_blank"><i class="fab fa-linkedin"></i></a>
+          <a href="https://www.instagram.com/kr._.aayush/" target="_blank"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      <form id="contact-form" class="contact-form stagger-animate stagger-delay-2">
+        <input type="text" name="from_name" id="from_name" placeholder="Your Name" required />
+        <input type="email" name="from_email" id="from_email" placeholder="Your Email" required />
+        <input type="text" name="subject" id="subject" placeholder="Subject" required />
+        <textarea name="message" id="message" placeholder="Your Message" required></textarea>
+        <button type="submit" class="btn">Send Message</button>
+        <div id="form-message"></div>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-social">
+      <a href="https://github.com/booy21" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="https://www.linkedin.com/in/aayush-kumar-542876293/" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="https://www.instagram.com/kr._.aayush/" target="_blank"><i class="fab fa-instagram"></i></a>
+    </div>
+    <div class="footer-nav">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="footer-text">
+      Designed with <span>❤️</span> & <span>🌙</span> — 💻 Aayushverse — <span class="brand-subtitle">Where Code Meets Creativity</span>
+    </div>
+  </footer>
+
+  <!-- Scroll to Top Button -->
+  <button id="scrollToTop" class="scroll-to-top" aria-label="Scroll to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html> 
